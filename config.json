@@ -1,5 +1,0 @@
-{
-    "uri" : "bolt://localhost:7687",
-    "user" : "neo4j",
-    "pwd" : "adamtest",
-    "dir":"C:/Users/DKDAVA/repos/AdAM_dataset/phuse-scripts/data/adam/TDF_ADaM_v1.0/"}

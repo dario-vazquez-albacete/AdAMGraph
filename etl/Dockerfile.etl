@@ -1,0 +1,11 @@
+# Dockerfile.etl
+FROM prefecthq/prefect:2.0-python3.9
+
+WORKDIR /app
+
+COPY requirements.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD ["python", "GraphETLpipeline.py"]

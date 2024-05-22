@@ -1,0 +1,53 @@
+create_nodes_functions:
+  - file_path: ./data/adsl.xpt
+    function: create_patients_nodes
+    node_type: patient_nodes
+  - file_path: ./data/adlbc.xpt
+    function: create_chemlab_nodes
+    node_type: chem_lab_nodes
+  - file_path: ./data/adlbh.xpt
+    function: create_hemolab_nodes
+    node_type: hemo_lab_nodes
+  - file_path: ./data/advs.xpt
+    function: create_vitalsigns_nodes
+    node_type: vital_sign_nodes
+  - file_path: ./data/adadas.xpt
+    function: create_adadas_nodes
+    node_type: adadas_nodes
+  - file_path: ./data/adcibc.xpt
+    function: create_cibc_nodes
+    node_type: adcibc_nodes
+  - file_path: ./data/adsl.xpt
+    function: create_treatment_nodes
+    node_type: treatment_nodes
+  - file_path: ./data/adae.xpt
+    function: create_adverseevent_nodes
+    node_type: adverse_event_nodes
+  - file_path: ./data/
+    function: create_visit_nodes
+    node_type: visit_nodes
+create_edges_functions:
+  - file_path: ./data/adsl.xpt
+    function: create_patient_treatment_relationship
+    edge_type: patient_treatment_edges
+  - file_path: ./data/adae.xpt
+    function: create_patient_adverseevent_relationship
+    edge_type: patient_adverseevent_edges
+  - file_path: ./data/adlbc.xpt
+    function: create_patient_chemistrylab_relationship
+    edge_type: patient_chemlab_edges
+  - file_path: ./data/adlbh.xpt
+    function: create_patient_hemolab_relationship
+    edge_type: patient_hemolab_edges
+  - file_path: ./data/advs.xpt
+    function: create_patient_vitalsign_relationship
+    edge_type: patient_vitalsign_edges
+  - file_path: ./data/adadas.xpt
+    function: create_patient_adadas_relationship
+    edge_type: patient_adadas_edges
+  - file_path: ./data/adcibc.xpt
+    function: create_patient_cibc_relationship
+    edge_type: patient_adadas_edges
+  - file_path: ./data/
+    function: create_patient_visit_relationship
+    edge_type: visit_patient_edges

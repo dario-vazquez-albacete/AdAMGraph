@@ -90,7 +90,7 @@ async def subflow(path: str, function):
     await write_graph(function, split_results, logger)
     del result
 
-@flow(name="create-grpah-flow",log_prints=True)
+@flow(name="create-graph-flow",log_prints=True)
 async def main_flow():
     # Configure the pipeline to load the desired data to the graph
     # Create and run node subflows
@@ -126,6 +126,6 @@ async def main_flow():
 if __name__ == "__main__":
     import time
     s = time.perf_counter()
-    asyncio.run(main_flow())
+    main_flow.serve(name="adam-graph-deployment")
     elapsed = time.perf_counter() - s
     print(f"Pipeline executed in {elapsed:0.2f} seconds.")

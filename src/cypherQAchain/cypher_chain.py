@@ -9,18 +9,15 @@ from langchain.prompts import (
 from langchain.chains import GraphCypherQAChain
 from langchain_community.graphs import Neo4jGraph
 from dotenv import dotenv_values
+import os
 
-
-# create connection object using neo4j
-data = dotenv_values(".env")
-
-graph = Neo4jGraph(
-    url=data["NEO4J_URI"], 
-                       username=data["NEO4J_USER"],              
-                       password=data["NEO4J_PASSWORD"]
-)
 
 async def graph_chain(Question: str):
+    graph = Neo4jGraph(
+    url=os.getenv('NEO4J_URI'), 
+                       username=os.getenv('NEO4J_USER'),              
+                       password=os.getenv('NEO4J_PASSWORD')
+)
     system_prompt_template = """Task:Generate Cypher statement to query a graph database that represents a clinical trial.
     Instructions:
     Use only the provided relationship types and properties in the schema.
@@ -123,7 +120,7 @@ async def graph_chain(Question: str):
     )
 
     cypherChain = GraphCypherQAChain.from_llm(
-        ChatOpenAI(model="gpt-3.5-turbo-0125",temperature=0, openai_api_key=data['OPENAI_API_KEY']),
+        ChatOpenAI(model="gpt-3.5-turbo-0125",temperature=0, openai_api_key=os.getenv('OPENAI_API_KEY')),
         graph=graph,
         verbose=True,
         return_direct=True,

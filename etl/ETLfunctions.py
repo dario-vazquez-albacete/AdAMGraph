@@ -1,14 +1,14 @@
 import pandas as pd
 from Classes import Neo4jConnection
-import json
 import logging
 from dotenv import dotenv_values
+import os
 
 # create connection object using neo4j
 data = dotenv_values(".env")
-conn = Neo4jConnection(uri=data["NEO4J_URI"], 
-                       username=data["NEO4J_USER"],              
-                       password=data["NEO4J_PASSWORD"])
+conn = Neo4jConnection(uri=os.getenv("NEO4J_URI"), 
+                       user=os.getenv("NEO4J_USER"),              
+                       pwd= os.getenv("NEO4J_PASSWORD"))
 
 db="neo4j"
 

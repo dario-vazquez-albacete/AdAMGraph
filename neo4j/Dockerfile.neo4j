@@ -3,7 +3,7 @@
 FROM neo4j:5.18.0
 # Set the import directory to 
 # NEO4J_HOME
-COPY ./neo4j.conf /var/lib/neo4j/conf
+COPY ./neo4j/neo4j.conf /var/lib/neo4j/conf
 USER root
 RUN wget https://github.com/neo4j/apoc/releases/download/5.18.0/apoc-5.18.0-core.jar
 RUN mv apoc-5.18.0-core.jar /var/lib/plugins

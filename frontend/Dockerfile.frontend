@@ -1,11 +1,16 @@
 # Dockerfile.frontend
-FROM python:3.9-slim
+FROM python:3.10.0-slim
 
 WORKDIR /app
 
-COPY requirements.txt requirements.txt
+COPY ../requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+# Copy the contents of the frontend directory into /app/frontend
+COPY ../frontend /app/frontend
+
+
+# Set the working directory to /app/frontend
+WORKDIR /app/frontend
 
 CMD ["streamlit", "run", "app.py"]

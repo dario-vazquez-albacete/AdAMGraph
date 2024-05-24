@@ -3,49 +3,60 @@ version: '3.8'
 services:
   langchain:
     build:
-      context: ./cypherQAchain
+      context: ./src
       dockerfile: Dockerfile.langchain
     container_name: langchain
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - NEO4J_URI=${NEO4J_URI}
+      - NEO4J_USER=${NEO4J_USER}
+      - NEO4J_PASSWORD=${NEO4J_PASSWORD}
     volumes:
-      - .:/app
+      - ./src:/app
     ports:
-      - "8000:8000"
-  
+      - "8002:8001"
+    depends_on:
+      - neo4j
+
   etl:
     build:
-      context: ./etl
-      dockerfile: Dockerfile.etl
+      context: .
+      dockerfile: etl/Dockerfile.etl
     container_name: etl
     environment:
       - NEO4J_URI=${NEO4J_URI}
       - NEO4J_USER=${NEO4J_USER}
       - NEO4J_PASSWORD=${NEO4J_PASSWORD}
+      - PREFECT_API_SERVICES_FLOW_RUN_NOTIFICATIONS_ENABLED=false
+      - PREFECT_SERVER_API_HOST=0.0.0.0
+      - PREFECT_UI_API_URL=http://localhost:4200/api
     volumes:
-      - .:/app
-      - ./data:/app/data
+      - ./data:/app/etl/data
+    ports:
+      - "4200:4200"
+    depends_on:
+      - neo4j
   
   frontend:
     build:
-      context: ./frontend
-      dockerfile: Dockerfile.frontend
+      context: .
+      dockerfile: frontend/Dockerfile.frontend
     container_name: frontend
     ports:
       - "8501:8501"
-  
+    depends_on:
+      - langchain
+
   neo4j:
     build:
-      context: ./neo4j
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: neo4j/Dockerfile.neo4j
     container_name: neo4j
     ports:
-      - "7474:7474"
-      - "7687:7687"
+      - "8082:7474"
+      - "8083:7687"
     environment:
       - NEO4J_AUTH=${NEO4J_USER}/${NEO4J_PASSWORD}
-    volumes:
-      - neo4j_data:/data
 
 volumes:
   data:

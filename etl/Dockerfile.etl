@@ -19,4 +19,4 @@ WORKDIR /app/etl
 
 EXPOSE 4200
 # Run the GraphETLpipeline.py script
-CMD ["prefect", "server", "start"]
+CMD ["python", "GraphETLpipeline.py"]

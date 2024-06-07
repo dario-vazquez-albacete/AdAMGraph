@@ -1,7 +1,7 @@
 import pandas as pd
 import sqlalchemy as sa
 import asyncio
-from prefect import task, flow, get_run_logger
+from prefect import task, flow, get_run_logger, serve
 import yaml
 
 # Load YAML file with pipeline configuration
@@ -126,6 +126,6 @@ async def main_flow():
 if __name__ == "__main__":
     import time
     s = time.perf_counter()
-    main_flow.serve(name="adam-graph-deployment")
+    main_flow.serve('GraphETLdeployment')
     elapsed = time.perf_counter() - s
-    print(f"Pipeline executed in {elapsed:0.2f} seconds.")
+    print(f"Pipeline run in {elapsed:0.2f} seconds.")

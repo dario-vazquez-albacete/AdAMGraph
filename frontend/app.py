@@ -4,8 +4,7 @@ import streamlit as st
 import pandas as pd
 import json
 
-CHATBOT_URL = "http://localhost:8000/graph-question"
-
+CHATBOT_URL = os.getenv("CHATBOT_URL")
 
 with st.sidebar:
     st.header("About")
@@ -59,7 +58,7 @@ if prompt := st.chat_input("What do you want to know?"):
 
     data = {'question': prompt}
     with st.spinner("Querying the database..."):
-        response = requests.post(CHATBOT_URL, json=data)
+        response = requests.post(url=CHATBOT_URL, json=data)
         if response.status_code == 200:
             cypher_table = response.json()["result"]
             explanation = response.json()["intermediate_steps"]

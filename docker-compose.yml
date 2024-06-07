@@ -42,6 +42,8 @@ services:
       context: .
       dockerfile: frontend/Dockerfile.frontend
     container_name: frontend
+    environment:
+      - CHATBOT_URL=${CHATBOT_URL}
     ports:
       - "8501:8501"
     depends_on:

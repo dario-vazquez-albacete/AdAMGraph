@@ -4,11 +4,12 @@ Clinical trial data and metadata is often stored and exchanged in a standard for
 In order to navigate this data one needs to be knowledgable of SQL and proficient in table joins and import multiple files or tables everytime a new analysis is requested.
 Knowledge graphs on the other hand allows us to explore highly linked data in a more understandable and efficient way. However, in order to query graphs you need to knnow Cypher language.
 This is where we can leverage the power of Large Language Models (LLMs) and completely abstract data managers from the complexity of querying a knowledge graph using natural language. Tools such as CypherQAchains of the Langchain framework greatly simplify the effort of developing AI applications for this purpose.
+
 ![](CypherQAchainPoC.gif)
 
 ## Description
 
-This project is an end-to-end data engineering and generative AI stack written primarily in Python with a touch of Cypher. The user is presented with an application where can ask analytical questions about the clinical trial graph model and returns an answer as an exportable table along with the Cypher query generated to produce the result. As a PoC it does not export large tables but only the first rows.
+This project is an end-to-end data engineering and generative AI stack written primarily in Python with a touch of Cypher and deployed with Docker compose. The user is presented with an application where can ask analytical questions about the clinical trial graph model and returns an answer as an exportable table along with the Cypher query generated to produce the result. As a PoC it does not export large tables but only the first rows.
 The stack consists of a Neo4j graph database for the clinical trial data, Langchain cypherQA backend with a FastAPI as REST API, a scalable Prefect ETL pipeline that populates the graph database from SAS files and a Streamlit frontend application as user interface.
 The clinical trial data is a sample from a CDISC pilot study kindly made availale by the PHUSE consortium which you can clone from their repository:
 https://github.com/phuse-org/phuse-scripts/tree/master/data/adam/cdiscpilot01

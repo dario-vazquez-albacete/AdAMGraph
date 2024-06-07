@@ -4,6 +4,7 @@ Clinical trial data and metadata is often stored and exchanged in a standard for
 In order to navigate this data one needs to be knowledgable of SQL and proficient in table joins and import multiple files or tables everytime a new analysis is requested.
 Knowledge graphs on the other hand allows us to explore highly linked data in a more understandable and efficient way. However, in order to query graphs you need to knnow Cypher language.
 This is where we can leverage the power of Large Language Models (LLMs) and completely abstract data managers from the complexity of querying a knowledge graph using natural language. Tools such as CypherQAchains of the Langchain framework greatly simplify the effort of developing AI applications for this purpose.
+![](CypherQAchainPoC.gif)
 
 ## Description
 

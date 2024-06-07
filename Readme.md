@@ -55,12 +55,12 @@ https://github.com/phuse-org/phuse-scripts/tree/master/data/adam/cdiscpilot01
 ### Installing
 
 * Clone the reposiory
-* Create and .env file in the root directory and set the following variables:
-    NEO4J_URI=neo4j://neo4j:7687
-    NEO4J_USER=your_neo4j_user
-    NEO4J_PASSWORD=nyour_neo4j_password
-    OPENAI_API_KEY=your_openai_api_key
-    CHATBOT_URL=http://localhost:8001/graph-question
+* Create and .env file in the root directory and set the following variables: \
+    NEO4J_URI=neo4j://neo4j:7687 \
+    NEO4J_USER=your_neo4j_user \
+    NEO4J_PASSWORD=nyour_neo4j_password \
+    OPENAI_API_KEY=your_openai_api_key \
+    CHATBOT_URL=http://localhost:8001/graph-question \
 
 * Execute the launch.sh script
 ``` bash

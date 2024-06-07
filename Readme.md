@@ -15,7 +15,8 @@ As data engineer one of my main focuses for this project is the development of a
 * Parametrized: There are two kinds of subflows in the ETL for nodes and for edges where taks are parametrized to pass individual functions. This way code complexity is reduced and the pipeline can become configurable
 * Asynchronous: The main flow creates nodes and edges concurrently through the individual subflows for each node or edge type. This greatly educes execution time 
 * Configurable: You can choose what nodes or edges to populate and it can be extended if new entities are required in the model 
-* Observable: After execution of the pipeline you can inspect the Prefect server dashboard and check the logs 
+* Observable: After execution of the pipeline you can inspect the Prefect server dashboard and check the logs
+<br>
 The clinical trial data for this project belongs to a CDISC pilot study kindly made availale by the PHUSE consortium which you can clone from their repository:
 https://github.com/phuse-org/phuse-scripts/tree/master/data/adam/cdiscpilot01
 

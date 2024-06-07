@@ -11,11 +11,11 @@ This is where we can leverage the power of Large Language Models (LLMs) and comp
 
 This project is an end-to-end data engineering and generative AI stack written primarily in Python with a touch of Cypher and deployed with Docker compose. The user is presented with an application where can ask analytical questions about the clinical trial graph model and returns an answer as an exportable table along with the Cypher query generated to produce the result. As a PoC it does not export large tables but only the first rows.
 The stack consists of a Neo4j graph database for the clinical trial data, Langchain cypherQA backend with a FastAPI as REST API, a scalable Prefect ETL pipeline that populates the graph database from SAS files and a Streamlit frontend application as user interface.
-As data engineer one of my main focuses for this project is the development of a scalable ETL pipeline to build the graph model. I took the chance to explore Python's Prefect framework because of its flexiility and observability capabilities over other alternatives like Apache Airflow. The ETL pipeline has 4 main features: \
+As data engineer one of my main focuses for this project is the development of a scalable ETL pipeline to build the graph model. I took the chance to explore Python's Prefect framework because of its flexiility and observability capabilities over other alternatives like Apache Airflow. The ETL pipeline has 4 main features: 
 * Parametrized: There are two kinds of subflows in the ETL for nodes and for edges where taks are parametrized to pass individual functions. This way code complexity is reduced and the pipeline can become configurable
-* Asynchronous: The main flow creates nodes and edges concurrently through the individual subflows for each node or edge type. This greatly educes execution time \
-* Configurable: You can choose what nodes or edges to populate and it can be extended if new entities are required in the model \
-* Observable: After execution of the pipeline you can inspect the Prefect server dashboard and check the logs \
+* Asynchronous: The main flow creates nodes and edges concurrently through the individual subflows for each node or edge type. This greatly educes execution time 
+* Configurable: You can choose what nodes or edges to populate and it can be extended if new entities are required in the model 
+* Observable: After execution of the pipeline you can inspect the Prefect server dashboard and check the logs 
 The clinical trial data for this project belongs to a CDISC pilot study kindly made availale by the PHUSE consortium which you can clone from their repository:
 https://github.com/phuse-org/phuse-scripts/tree/master/data/adam/cdiscpilot01
 
@@ -65,7 +65,7 @@ https://github.com/phuse-org/phuse-scripts/tree/master/data/adam/cdiscpilot01
     NEO4J_USER=your_neo4j_user \
     NEO4J_PASSWORD=nyour_neo4j_password \
     OPENAI_API_KEY=your_openai_api_key \
-    CHATBOT_URL=http://localhost:8001/graph-question \
+    CHATBOT_URL=http://localhost:8001/graph-question 
 
 * Execute the launch.sh script
 ``` bash

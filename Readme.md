@@ -1,8 +1,8 @@
 # Clinical Data Manager AI Assistant
 
-Clinical trial data and metadata is often stored and exchanged in a standard format known as AdAM (Analysis Data Model) which contains multiple files categories of clinical parameters measured in patients at different points of the clinical trial.
-In order to navigate this data one needs to be knowledgable of SQL and proficient in table joins and import multiple files or tables everytime a new analysis is requested.
-Knowledge graphs on the other hand allows us to explore highly linked data in a more understandable and efficient way. However, in order to query graphs you need to knnow Cypher language.
+Clinical trial data and metadata is often stored and exchanged in a standard format known as AdAM (Analysis Data Model). The data model consists of multiple file categories of clinical parameters measured in the patients during the clinical trial.
+In order to navigate this data one needs to be knowledgable of SQL and proficient in table joins. Plus every time a new analysis is requested the tables must be again imported and joined.
+Knowledge graphs on the other hand allows us to explore highly linked data in a more understandable and efficient way. However, in order to query graphs you need to know Cypher language.
 This is where we can leverage the power of Large Language Models (LLMs) and completely abstract data managers from the complexity of querying a knowledge graph using natural language. Tools such as CypherQAchains of the Langchain framework greatly simplify the effort of developing AI applications for this purpose.
 
 ![](CypherQAchainPoC.gif)
@@ -11,8 +11,8 @@ This is where we can leverage the power of Large Language Models (LLMs) and comp
 
 This project is an end-to-end data engineering and generative AI stack written primarily in Python with a touch of Cypher and deployed with Docker compose. The user is presented with an application where can ask analytical questions about the clinical trial graph model and returns an answer as an exportable table along with the Cypher query generated to produce the result. As a PoC it does not export large tables but only the first rows.
 The stack consists of a Neo4j graph database for the clinical trial data, Langchain cypherQA backend with a FastAPI as REST API, a scalable Prefect ETL pipeline that populates the graph database from SAS files and a Streamlit frontend application as user interface.
-As data engineer one of my main focuses for this project is the development of a scalable ETL pipeline to build the graph model. I took the chance to explore Python's Prefect framework because of its flexiility and observability capabilities over other alternatives like Apache Airflow. The ETL pipeline has 4 main features: 
-* Parametrized: There are two kinds of subflows in the ETL for nodes and for edges where taks are parametrized to pass individual functions. This way code complexity is reduced and the pipeline can become configurable
+As data engineer the main focus of this project was the development of a scalable ETL pipeline to build the graph model. I took the opportunity to explore Python's Prefect framework because of its flexiility and observability capabilities over other alternatives like Apache Airflow. The ETL pipeline has 4 main features: 
+* Parametrized: There are two kinds of subflows in the ETL for nodes and for edges where tasks are parametrized to pass individual functions. This way code complexity is reduced and the pipeline can become configurable
 * Asynchronous: The main flow creates nodes and edges concurrently through the individual subflows for each node or edge type. This greatly educes execution time 
 * Configurable: You can choose what nodes or edges to populate and it can be extended if new entities are required in the model 
 * Observable: After execution of the pipeline you can inspect the Prefect server dashboard and check the logs
